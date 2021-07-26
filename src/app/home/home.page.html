@@ -1,0 +1,57 @@
+<ion-content scrollEvents="true" [appHideHeader]="hideheader" (ionScroll)="onScroll($event)">
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ion-row class="info-row" #hideheader>
+        <ion-col size="3" class="ion-padding-start">
+            <!--  <img src="../../assets/img/delivery.png"> -->
+            <img class="header-icon" src="../../../assets/img/1x/original-icon.png">
+
+        </ion-col>
+        <ion-col size="7">
+            <ion-text class="header-text" color="dark">
+                <b>EkoGo</b>
+            </ion-text>
+        </ion-col>
+        <ion-col size="2">
+            <ion-button fill="clear" routerLink="/user">
+                <ion-icon name="person-outline" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-col>
+    </ion-row>
+
+    <ion-row class="sticky-row">
+        <ion-col size="10">
+            <ion-text class="ion-padding-start" color="medium" [ngClass]="{'location-visible':showLocationDetail,'location-hidden':!showLocationDetail}"></ion-text>
+            <ion-searchbar placeholder="Search"></ion-searchbar>
+        </ion-col>
+        <ion-col size="2">
+            <ion-button fill="clear">
+                <ion-icon name="options-outline" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-col>
+    </ion-row>
+
+    <ion-slides [options]="highlightSlideOpts">
+        <ion-slide *ngFor="let h of highlights">
+            <img [src]="h.img" alt="">
+        </ion-slide>
+    </ion-slides>
+
+
+    <ion-text color="dark"> <b style="padding-left: 10px;">There are 50 markets nearby you</b></ion-text>
+
+    <ion-card *ngFor="let supermercado of supermercados; let i=index">
+        <img [src]="supermercado['photo']" [routerLink]="['/details', supermercado['name'],supermercado['rating'],supermercado['photo']]">
+        <ion-card-header>
+            <ion-card-subtitle>5km</ion-card-subtitle>
+            <ion-card-title>{{supermercado['name']}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            Rating: {{supermercado['rating']}}
+            <ion-icon (click)="liked(supermercado)" style="margin-left: 200px;" size="large" [name]="supermercado['heart']"></ion-icon>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

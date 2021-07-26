@@ -1,0 +1,54 @@
+ion-slides {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.featured-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+ion-content {
+    --padding-top: 10px;
+}
+
+.sticky-row {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #fff;
+    box-shadow: 0px 9px 11px -15px rgba(0, 0, 0, 0.75);
+    //flex-direction: row;
+}
+
+.info-row {
+    background: #fff;
+    position: relative;
+    z-index: 2;
+}
+
+ion-refresher {
+    padding-top: calc(env(safe-area-inset-top)+50px);
+}
+
+ion-searchbar {
+    --icon-color: var(--icon-color-medium);
+}
+
+.location-visible {
+    opacity: 1;
+    transition: .5s;
+}
+
+.location-hidden {
+    opacity: 0;
+    transition: .5s;
+}

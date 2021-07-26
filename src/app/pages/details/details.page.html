@@ -1,0 +1,83 @@
+<ion-header>
+    <ion-toolbar color="light">
+        <ion-buttons slot="start">
+            <ion-button fill="solid" shape="round" color="light" routerLink="/home">
+                <ion-icon slot="icon-only" name="arrow-back" color="primary"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>{{ name}}</ion-title>
+        <ion-buttons slot="end">
+            <ion-button fill="solid" shape="round" color="light">
+                <ion-icon slot="icon-only" name="share-outline" color="primary"></ion-icon>
+            </ion-button>
+            <ion-button fill="solid" shape="round" color="light">
+                <ion-icon slot="icon-only" name="search-outline" color="primary"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" [appParallax]="img" (ionScroll)="onScroll($event)">
+
+    <div #img class="header-image" [style.background-image]="'url(' + image + ')'">
+    </div>
+
+
+
+    <div *ngIf="data">
+        <ion-row>
+            <ion-col size="12" class="light-bg ion-padding-start">
+                <ion-icon name="star" color="primary"></ion-icon>
+                <ion-text color="primary">
+                    {{ rating }}</ion-text>
+                <ion-text color="medium"> (+600)<span *ngFor="let tag of data.tags | slice:0:2"> · {{ tag }} </span>
+                </ion-text>
+            </ion-col>
+            <ion-col size="12" class="light-bg ion-padding-start">
+                <ion-icon name="location-outline" color="medium"></ion-icon>
+                <ion-text>
+                    {{ data.distance }}
+                </ion-text>
+            </ion-col>
+        </ion-row>
+    </div>
+
+
+    <div slot="fixed">
+        <ion-slides *ngIf="data" [options]="opts" [ngClass]="{'slides-visible':categorySlideVisible, 'slides-hidden':!categorySlideVisible}">
+            <ion-slide *ngFor="let categorie of obj_params; let i = index">
+                <ion-button class="active-category" fill="clear" (click)="selectCategory(i)">{{categorie}}
+                </ion-button>
+            </ion-slide>
+        </ion-slides>
+    </div>
+
+
+    <ion-list *ngFor="let cat of obj_params">
+        <ion-list-header>
+            <ion-label>{{cat}}</ion-label>
+        </ion-list-header>
+
+        <ion-row *ngFor="let product of products['category'][cat]" class="ion-padding meal-row">
+            <ion-col size="8" class="border-bottom">
+                <ion-label>
+                    {{product.title}}
+                    <p>{{product.description}}</p>
+                </ion-label>
+                <ion-text color="dark"><b>{{product.price|currency:'USD'}}</b></ion-text>
+                <ion-label (click)="addToKart(product)" style="margin-left: 70px;">
+                    <ion-icon size="large" name="add-outline"></ion-icon>
+                    <ion-icon size="large" name="cart-outline"></ion-icon>
+                </ion-label>
+
+
+            </ion-col>
+            <ion-col size="4" class="border-bottom">
+                <div class="meal-image" [style.background-image]="'url('+product.photo+')'"></div>
+            </ion-col>
+        </ion-row>
+
+    </ion-list>
+
+
+</ion-content>

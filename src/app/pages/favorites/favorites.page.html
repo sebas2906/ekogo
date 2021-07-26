@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar color="light">
+        <ion-buttons slot="start">
+            <ion-button fill="solid" shape="round" color="light" routerLink="/user">
+                <ion-icon slot="icon-only" name="arrow-back" color="success"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Your Favorite Markets</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+    <ion-card *ngFor="let fav of favs" [routerLink]="['/details', fav['name'],fav['rating'],fav['photo']]">
+        <img [src]="fav.photo" />
+        <ion-card-header>
+            <ion-card-subtitle>5km</ion-card-subtitle>
+            <ion-card-title>{{fav.name}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </ion-card-content>
+    </ion-card>
+
+
+
+
+</ion-content>

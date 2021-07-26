@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar color="light">
+        <ion-buttons slot="start">
+            <ion-button fill="solid" shape="round" color="light" routerLink="/user">
+                <ion-icon slot="icon-only" name="arrow-back" color="success"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Your Kart</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+    <ion-row *ngFor="let item of my_kart" class="ion-padding meal-row">
+        <ion-col size="8" class="border-bottom">
+            <ion-label>
+                {{item.title}}
+                <p>This description .</p>
+            </ion-label>
+            <ion-text color="dark"><b>{{item.price|currency:'USD'}}</b></ion-text>
+        </ion-col>
+        <ion-col size="4" class="border-bottom">
+            <!--  <div class="meal-image" [style.background-image]="'url('+meal.img+')'"></div> -->
+        </ion-col>
+    </ion-row>
+
+
+    <ion-button *ngIf="my_kart.length" class="pay-button" expand="block" fill="outline" color="success" routerLink="/payment">Pay</ion-button>
+
+    <div class="empty" *ngIf="!my_kart.length">
+        No Kart Elements, try to add something
+    </div>
+
+
+</ion-content>

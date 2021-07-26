@@ -1,0 +1,72 @@
+<ion-header>
+    <ion-toolbar color="light">
+        <ion-buttons slot="start">
+            <ion-button fill="solid" shape="round" color="light" routerLink="/kart">
+                <ion-icon slot="icon-only" name="arrow-back" color="success"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Payment</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+        <ion-list-header>
+            <ion-label class="header">
+                Payment Options
+            </ion-label>
+        </ion-list-header>
+
+        <ion-item>
+            <ion-label>Payment Method</ion-label>
+            <ion-select placeholder="Select One">
+                <ion-select-option value="0">Credit Card</ion-select-option>
+                <ion-select-option value="1">Paypal</ion-select-option>
+                <ion-select-option value="2">Cripto Currency</ion-select-option>
+                <ion-select-option value="3">Eko-Coins</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Delivery Options</ion-label>
+            <ion-select value="brown" okText="Okay" cancelText="Dismiss">
+                <ion-select-option value="brown">Home Service</ion-select-option>
+                <ion-select-option value="blonde">Pick Up</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Use Eko-Coin to adjust</ion-label>
+            <ion-toggle (ionChange)="changed()" [(ngModel)]="discount" color="success"></ion-toggle>
+        </ion-item>
+        <ion-item style="margin-top: 80px;">
+            <ion-label>
+                Subtotal
+            </ion-label>
+            <ion-label class="amount" slot="end" style="padding-left: 150px;">${{subtotal}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                Delivery
+            </ion-label>
+            <ion-label class="amount" slot="end" style="padding-left: 150px;">${{ekc_disc}}</ion-label>
+        </ion-item>
+        <ion-item *ngIf="discount">
+            <ion-label>
+                Eko-Coin disccount
+            </ion-label>
+            <ion-label class="amount" slot="end" style="padding-left: 150px;">${{delivery}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                <b>Total</b>
+            </ion-label>
+            <ion-label class="total" slot="end" style="padding-left: 150px;">${{total}}</ion-label>
+        </ion-item>
+    </ion-list>
+    <ion-button color="success" expand="block" style="margin-top: 20px" (click)="presentAlert()">
+        Pay Now
+    </ion-button>
+
+</ion-content>

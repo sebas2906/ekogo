@@ -1,0 +1,95 @@
+<ion-content scrollEvents="true" [style.--background]="scanActive?'#00000000':'#fff'">
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <div [hidden]="scanActive">
+        <ion-row class="info-row" #hideheader>
+            <ion-col size="3" class="ion-padding-start" routerLink="/home">
+                <img class="header-icon" src="../../../assets/img/1x/original-icon.png">
+            </ion-col>
+            <ion-col size="7">
+                <ion-text class="header-text" color="dark">
+                    <b>User</b>
+                </ion-text>
+            </ion-col>
+            <ion-col size="2">
+                <ion-button fill="clear" routerLink="/user">
+                    <ion-icon name="options-outline" slot="icon-only"></ion-icon>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+
+        <div class="coins">
+            <ion-row>
+                <ion-col size="2">
+                    <img class="coin-img" src="../../../assets/img/coin.png">
+                </ion-col>
+                <ion-col size="2">
+                    <p class="coin-value">{{quantity}} EKC</p>
+                </ion-col>
+                <ion-col size="3"></ion-col>
+                <ion-col size="5">
+                    <ion-button (click)="presentAlert()" class="transfer-button" color="success" Fill="outline">Send</ion-button>
+                </ion-col>
+            </ion-row>
+        </div>
+        <div class="user-avatar"></div>
+        <p class="user-name">{{username}}</p>
+
+        <ion-list>
+            <ion-item color="success" routerLink="/kart">
+                <ion-label>
+                    <ion-row>
+                        <ion-col class="selection-title" size="9">
+                            Open your cart
+                        </ion-col>
+                        <ion-col size="3">
+                            <ion-badge *ngIf="kart_number>0" color="danger">{{kart_number}}</ion-badge>
+                            <ion-icon size="large" name="cart-outline"></ion-icon>
+                        </ion-col>
+                    </ion-row>
+                </ion-label>
+            </ion-item>
+            <ion-item color="success" routerLink="/favorites">
+                <ion-label>
+                    <ion-row>
+                        <ion-col class="selection-title" size="9">
+                            Favorites
+                        </ion-col>
+                        <ion-col size="3">
+                            <ion-badge *ngIf="fav_number>0" color="danger">{{fav_number}}</ion-badge>
+                            <ion-icon size="large " name="heart-outline"></ion-icon>
+                        </ion-col>
+                    </ion-row>
+                </ion-label>
+            </ion-item>
+            <ion-item color="success" (click)="startScanner()">
+                <ion-label>
+                    <ion-row>
+                        <ion-col class="selection-title" size="9">
+                            Receive ECKO-COINS
+                        </ion-col>
+                        <ion-col size="3">
+                            <ion-icon class="money" size="large" name="cash-outline"></ion-icon>
+                        </ion-col>
+                    </ion-row>
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-button (click)="closeSession()" size="large" style="margin-top: 10px;" slot="end" color="danger" fill="outline">Close Session</ion-button>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <ion-button class="cancel-btn" [hidden]="!scanActive" expand="full" (click)="stopScanner()">
+        Cancelar
+    </ion-button>
+
+    <div class="scan-box" [hidden]="!scanActive"></div>
+
+
+
+
+</ion-content>

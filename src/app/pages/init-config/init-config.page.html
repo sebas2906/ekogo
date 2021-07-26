@@ -1,0 +1,39 @@
+<ion-content scrollEvents="true">
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ion-row class="info-row" #hideheader>
+        <ion-col size="3" class="ion-padding-start">
+            <!--  <img src="../../assets/img/delivery.png"> -->
+            <img class="header-icon" src="../../../assets/img/1x/original-icon.png">
+
+        </ion-col>
+        <ion-col size="9">
+            <ion-text class="header-text" color="dark">
+                <b>Let's start</b>
+            </ion-text>
+        </ion-col>
+
+    </ion-row>
+
+    <p class="text" style="font-size: 21px; font-weight: 200; margin-top: 10px; margin-bottom: 10px;">Hi Jhon, What's your current location?</p>
+    <ion-searchbar placeholder="Search"></ion-searchbar>
+    <app-map-card *ngIf="lat!=0 && long!=0" [latitud]="lat" [longitud]="long"></app-map-card>
+
+    <div class="bottom-container">
+        <p class="text">This will be your fixed adress from now, you can change it on configuration</p>
+        <ion-item>
+            <ion-label position="floating">Address</ion-label>
+            <ion-input type="text" placeholder="Av. South Washington"></ion-input>
+        </ion-item>
+
+    </div>
+
+    <ion-button expand="block" routerLink="/home">Continue</ion-button>
+
+
+
+
+</ion-content>

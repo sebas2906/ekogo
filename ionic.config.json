@@ -1,0 +1,7 @@
+{
+  "name": "ekogo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

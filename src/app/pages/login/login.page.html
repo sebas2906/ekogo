@@ -1,0 +1,32 @@
+<ion-content>
+    <div class="container">
+        <div class="avatar"></div>
+        <p class="title-header">EkoGo</p>
+        <p class="subtitle-header">Green Selection</p>
+        <form #formulario="ngForm">
+            <p class="title2"><b>Sign In</b></p>
+            <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input name="email" [(ngModel)]="user" type="email" email></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input name="password" [(ngModel)]="password" type="password" password></ion-input>
+            </ion-item>
+            <ion-button (click)="ingresar()" expand="block">Sign In</ion-button>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <a href="#">Forgot Password?</a>
+                    </ion-col>
+                    <ion-col>
+                        <ion-button fill="outline">Sign Up</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </form>
+    </div>
+
+
+
+</ion-content>
