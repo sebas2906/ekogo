@@ -1,6 +1,10 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "ekogo",
-	"webDir": "www",
-	"bundledWebRuntime": false
+    "appId": "io.ionic.starter",
+    "appName": "ekogo",
+    "webDir": "www",
+    "bundledWebRuntime": false,
+    "server": {
+        "url": "https://node-hello-world-example-grateful-mandrill-ay.mybluemix.",
+        "cleartext": true
+    }
 }

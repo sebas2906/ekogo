@@ -7,7 +7,7 @@
     <div [hidden]="scanActive">
         <ion-row class="info-row" #hideheader>
             <ion-col size="3" class="ion-padding-start" routerLink="/home">
-                <img class="header-icon" src="../../../assets/img/1x/original-icon.png">
+                <img class="header-icon" src="../../../assets/img/new-logo.svg">
             </ion-col>
             <ion-col size="7">
                 <ion-text class="header-text" color="dark">
@@ -16,7 +16,7 @@
             </ion-col>
             <ion-col size="2">
                 <ion-button fill="clear" routerLink="/user">
-                    <ion-icon name="options-outline" slot="icon-only"></ion-icon>
+                    <ion-icon color="success" name="options-outline" slot="icon-only"></ion-icon>
                 </ion-button>
             </ion-col>
         </ion-row>
@@ -83,7 +83,7 @@
         </ion-list>
     </div>
 
-    <ion-button class="cancel-btn" [hidden]="!scanActive" expand="full" (click)="stopScanner()">
+    <ion-button color="success" class="cancel-btn" [hidden]="!scanActive" expand="full" (click)="stopScanner()">
         Cancelar
     </ion-button>
 

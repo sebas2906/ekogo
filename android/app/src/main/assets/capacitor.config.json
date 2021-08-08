@@ -2,5 +2,10 @@
 	"appId": "io.ionic.starter",
 	"appName": "ekogo",
 	"webDir": "www",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": false,
+	"server": {
+		"url": "http://192.168.0.110:8100",
+		"cleartext": true,
+		"originalUrl": "https://node-hello-world-example-grateful-mandrill-ay.mybluemix."
+	}
 }
